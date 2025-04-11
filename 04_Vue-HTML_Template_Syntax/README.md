@@ -322,10 +322,10 @@ Example : Shows a message based on a user's exam score.
 <template>
   <input type="number" v-model="score" placeholder="Enter your score" />
 
-  <div v-if="score >= 90">🏆 Excellent!</div>
-  <div v-else-if="score >= 75">👍 Good Job!</div>
-  <div v-else-if="score >= 50">👌 Average</div>
-  <div v-else>📚 Needs Improvement</div>
+  <div v-if="score >= 90">Excellent!</div>
+  <div v-else-if="score >= 75">Good Job!</div>
+  <div v-else-if="score >= 50">Average</div>
+  <div v-else> Needs Improvement</div>
 </template>
 
 <script setup>
