@@ -134,6 +134,7 @@ li {
 In Vue 3, event handlers come in several types based on how you attach them, how you use parameters, modifiers, and the lifecycle they're involved in.
 
 1. Inline Event Handlers
+   
 You directly write the logic in the template using a small expression.
 
 When Logic is very short (like toggling a value, incrementing a counter) and no need to reuse the function than inline event handler is used.
@@ -151,6 +152,7 @@ const count = ref(0)
 ```
 
 2. Method-based Event Handler
+   
 The logic is placed inside a function in <script setup> and referenced in the template.
 
 When the logic is more than a line. You will reuse the logic or want cleaner separation of concerns. You want better readability and testability method based event handler usful.
@@ -172,6 +174,7 @@ function increment() {
 ```
 
 3. Event Handler with Parameters
+   
 Pass arguments to event handlers using an arrow function.
 
 When need to pass specific data (e.g., an item ID, index, or label) to your handler even handler with parameter s=is useful.
@@ -189,6 +192,7 @@ const greet = (name) => {
 ```
 
 4. Accessing the Event Object
+   
 Vue automatically passes the native event object to the handler. You can access it via $event or directly as a parameter.
 
 When you need DOM-level details like event.target, event.clientX, event.key, etc. Example: Track mouse position, get input field value directly from the event.
