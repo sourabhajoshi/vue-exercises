@@ -117,3 +117,32 @@ const selectedColors = ref([])
 Binds a multi-select dropdown to an array.
 
 #### **Modifiers with v-model**
+
+Vue provides modifiers that change how input data is bound.
+
+#### **1. .lazy Modifier**
+Normally, v-model updates the data immediately when the user types (input event). .lazy changes that it updates only when the input loses focus (blur event).
+
+Reduces unnecessary updates while typing (good for performance). Useful when you only care about the final value after user finishes editing.
+
+Ideal when you're updating backend or doing validation on blur (not on every keystroke).
+
+```<input v-model.lazy="username" />```
+
+#### **2. .number Modifier**
+Automatically converts string input into a number.
+
+HTML inputs always return strings, even for number fields. If you need actual numbers (for math, calculations, or type-checking), .number ensures correct data type.
+
+Without .number, age would be "25" (string). With .number, age is 25 (number).
+
+```<input v-model.number="age" type="number" />```
+
+#### **3. .trim Modifier**
+Removes leading and trailing whitespace from the user’s input.
+
+Prevents accidental spaces from messing up validations or searches. Especially important for usernames, emails, passwords — spaces can break logic.
+
+If the user types " joshi124@gmail.com " → it becomes "joshi124@gmail.com" automatically. This saves time from doing email.value.trim() manually in your methods.
+
+```<input v-model.trim="email" />```
