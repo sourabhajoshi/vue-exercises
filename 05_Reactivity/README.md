@@ -210,6 +210,7 @@ ref()
   ```
 
 reactive()
+
 - Use for objects, arrays, and structured data
   ```
   const form = reactive({ name: '', email: '' });
