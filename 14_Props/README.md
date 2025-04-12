@@ -231,7 +231,7 @@ defineProps({
 Type: String, 
 Validator: Ensures the value is one of the allowed options ('active', 'inactive', 'banned') and Default: 'active'
 
-✅ 8. Default Value for Arrays or Objects
+8. Default Value for Arrays or Objects
 
 This is an array with default values ['dark', 'English']. Always use a function for default arrays/objects to avoid shared references between components.
 ```
