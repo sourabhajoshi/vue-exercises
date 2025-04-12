@@ -1,12 +1,41 @@
-# Lifecycle Hooks
+# Components in Vue
 
-Lifecycle hooks are special functions that let you run code at specific stages of a component’s life from creation to destruction. Vue provides a set of lifecycle hooks that let you tap into these stages.
+Components are reusable building blocks in Vue apps. They are like custom HTML elements you define and reuse across your app.
 
-Lifecycle Diagram
+
+we need Watchers
+- Reuse code
+- Organize big projects
+- Separate logic into meaningful chunks
+- Easy to maintain and scale
+
+That’s where watchers shine. Unlike computed, which is for deriving values, watchers are for doing something when values change.
+
+#### **Structure of a Vue Component**
+
+A Vue component usually has three main parts: template, script and style.
+
+    <template> Block this is where you write the HTML (the user interface).
+
+    <script setup> Block
+    This is where you write your JavaScript logic: variables, functions, props, events, etc.
+
+    <style> Block
+    This is where you write CSS to style your component.
+
+
 ```
-beforeCreate → created → beforeMount → mounted
-→ beforeUpdate → updated
-→ beforeUnmount → unmounted
+<template>
+<h2>Hello World!</h2>
+</template>
+
+<script setup>
+// you can write logic here
+</script>
+
+<style scoped>
+/* styles go here */
+</style>
 ```
 
 Example : 
@@ -14,77 +43,241 @@ Example :
 ```
 <template>
   <div>
-    <h2>Count: {{ count }}</h2>
-    <button @click="count++">Increment</button>
+    <h1>Hello, {{ name }}</h1>
+    <button @click="changeName">Change Name</button>
   </div>
 </template>
 
 <script setup>
-import { ref, onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onBeforeUnmount, onUnmounted } from 'vue'
+import { ref } from 'vue'
 
-const count = ref(0)
+const name = ref('Vue User')
 
-// onBeforeMount: Just before the template is mounted to DOM
-onBeforeMount(() => {
-  console.log('onBeforeMount: DOM not mounted yet')
-})
+function changeName() {
+  name.value = 'Vue Master'
+}
+</script>
 
-// onMounted: After the component is inserted into the DOM
-onMounted(() => {
-  console.log('onMounted: Component is in the DOM now')
-})
+<style scoped>
+h1 {
+  color: green;
+}
+button {
+  margin-top: 10px;
+  padding: 6px 12px;
+}
+</style>
+```
 
-// onBeforeUpdate: Called before DOM updates when reactive data changes
-onBeforeUpdate(() => {
-  console.log('onBeforeUpdate: Reactive value changed, DOM will update soon')
-})
+#### **Types of Components in Vue**
+1. Root Component
+This is the main component from which the entire app starts. It's usually defined in App.vue. Mounted in main.js.
 
-// onUpdated: Called after the DOM updates
-onUpdated(() => {
-  console.log('onUpdated: DOM updated')
-})
+```
+// main.js
+import { createApp } from 'vue'
+import App from './App.vue'
 
-// onBeforeUnmount: Called before the component is removed from DOM
-onBeforeUnmount(() => {
-  console.log('onBeforeUnmount: Component will be removed')
-})
+createApp(App).mount('#app')
 
-// onUnmounted: Called after component is removed
-onUnmounted(() => {
-  console.log('onUnmounted: Component has been removed')
-})
+<!-- App.vue -->
+<template>
+  <h1>This is the Root Component</h1>
+</template>
+```
+
+2. Child Components
+These are components nested inside other components. They help break the UI into reusable pieces.
+
+```
+<!-- HelloWorld.vue -->
+<template>
+  <p>Hello from Child Component!</p>
+</template>
+
+<!-- In App.vue -->
+<template>
+  <HelloWorld />
+</template>
+
+<script setup>
+import HelloWorld from './components/HelloWorld.vue'
+</script>
+```
+3. Global Components
+Registered once and used anywhere in the app without importing. Not recommended for large apps (can clutter global space).
+
+```
+// main.js
+import HelloWorld from './components/HelloWorld.vue'
+app.component('HelloWorld', HelloWorld)
+Now you can use <HelloWorld /> in any component.
+```
+
+4. Local Components
+Registered and used only inside a specific component. Keeps code organized and scoped.
+
+```
+<script>
+import HelloWorld from './HelloWorld.vue'
+
+export default {
+  components: {
+    HelloWorld
+  }
+}
 </script>
 ```
 
-1. beforeCreate()
+5. Functional Components
+Stateless, no reactive data. Lightweight, faster to render. Often used for simple UI rendering.
+```
+<script setup>
+defineProps(['title'])
+</script>
 
-Not available in Composition API. It's implicitly part of setup. So we don't use beforeCreate() directly.
+<template>
+  <h2>{{ title }}</h2>
+</template>
+```
+6. Dynamic Components
+Loaded or switched dynamically using <component :is="...">.
+```
+<component :is="currentComponent"></component>
 
-2. created()
+<script setup>
+import CompA from './CompA.vue'
+import CompB from './CompB.vue'
 
-Not available in Composition API. Again, all code inside <script setup> runs after beforeCreate and created, so it's already covered.
+const currentComponent = ref('CompA') // or 'CompB'
+</script>
+```
+7. Async Components
+Loaded only when needed (lazy loading). Useful for improving performance.
+```
+const AsyncComponent = defineAsyncComponent(() =>
+  import('./MyBigComponent.vue')
+)
+```
 
-3. onBeforeMount()
+# Component Registration
 
-Runs before the component is mounted to the DOM. Setup tasks just before DOM is available.
+Before using a component inside another, Vue needs to know about it. Registration is how we tell Vue, "Hey, this component exists, and I want to use it."
 
-4. onMounted()
+#### **1. Local Component Registration**
 
-Runs after the component is mounted to the DOM. DOM is now available and reactive state is ready.
+Local means the component is only available in the component where it's registered.
 
-5. onBeforeUpdate()
+Create your child component (e.g., MyButton.vue)
+```
+<!-- MyButton.vue -->
+<template>
+  <button class="my-button">Click Me</button>
+</template>
 
-Runs before the DOM is patched due to reactive data change. Acts like a "last chance" before the DOM changes.
+<script>
+export default {
+  name: 'MyButton'
+}
+</script>
+```
+Import and register it locally in a parent component (e.g., App.vue)
+```
+<!-- App.vue -->
+<template>
+  <div>
+    <MyButton />
+  </div>
+</template>
 
-6. onUpdated()
+<script>
+import MyButton from './components/MyButton.vue'
 
-Runs after the DOM has been updated. React to what just changed.
+export default {
+  components: {
+    MyButton  // Local registration
+  }
+}
+</script>
+```
 
-7. onBeforeUnmount()
+#### **2. Global Component Registration**
+Global means the component is available in all components without importing every time.
 
-Runs before the component is unmounted and removed from the DOM. We can Cleanup (intervals, event listeners).
+Create global component (e.g., BaseCard.vue)
+```
+<!-- BaseCard.vue -->
+<template>
+  <div class="base-card"><slot /></div>
+</template>
 
-8. onUnmounted()
+<script>
+export default {
+  name: 'BaseCard'
+}
+</script>
+```
+Register it globally in main.js or main.ts
+```
+// main.js
+import { createApp } from 'vue'
+import App from './App.vue'
+import BaseCard from './components/BaseCard.vue'
 
-Runs after the component is unmounted. Final cleanup and no logic should run after this.
+const app = createApp(App)
 
+app.component('BaseCard', BaseCard)  // Global registration
+
+app.mount('#app')
+
+```
+
+Example : Global Registration of a LoadingSpinner Component
+
+Create the LoadingSpinner.vue component
+```
+<template>
+  <div class="spinner">Loading...</div>
+</template>
+
+<script setup>
+</script>
+
+<style scoped>
+.spinner {
+  font-size: 1.2rem;
+  color: teal;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+
+```
+Register LoadingSpinner globally in main.js
+```
+import { createApp } from 'vue'
+import App from './App.vue'
+import LoadingSpinner from './components/LoadingSpinner.vue'
+
+const app = createApp(App)
+
+//Global registration
+app.component('LoadingSpinner', LoadingSpinner)
+
+app.mount('#app')
+```
+Use LoadingSpinner in any component (Home.vue) without importing
+```
+<template>
+  <h2>Home Page</h2>
+  <LoadingSpinner />
+</template>
+
+<script setup>
+// No import needed for globally registered components!
+</script>
+```
