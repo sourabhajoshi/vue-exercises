@@ -57,26 +57,34 @@ onUnmounted(() => {
 ```
 
 1. beforeCreate()
+
 Not available in Composition API. It's implicitly part of setup. So we don't use beforeCreate() directly.
 
 2. created()
+
 Not available in Composition API. Again, all code inside <script setup> runs after beforeCreate and created, so it's already covered.
 
 3. onBeforeMount()
+
 Runs before the component is mounted to the DOM. Setup tasks just before DOM is available.
 
 4. onMounted()
+
 Runs after the component is mounted to the DOM. DOM is now available and reactive state is ready.
 
 5. onBeforeUpdate()
+
 Runs before the DOM is patched due to reactive data change. Acts like a "last chance" before the DOM changes.
 
 6. onUpdated()
+
 Runs after the DOM has been updated. React to what just changed.
 
 7. onBeforeUnmount()
+
 Runs before the component is unmounted and removed from the DOM. We can Cleanup (intervals, event listeners).
 
 8. onUnmounted()
+
 Runs after the component is unmounted. Final cleanup and no logic should run after this.
 
