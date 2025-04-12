@@ -23,16 +23,17 @@ This is where you write your JavaScript logic: variables, functions, props, even
 <style> Block
 This is where you write CSS to style your component.
 
-```
-<template>
-  <h2>Hello World!</h2>
-</template>
+  ```
+  <template>
+    <h2>Hello World!</h2>
+  </template>
 
-<script setup>
-// you can write logic here
-</script>
+  <script setup>
+  // you can write logic here
+  </script>
+  
+  <style scoped>
+  /* styles go here */
+  </style>
+  ```
 
-<style scoped>
-/* styles go here */
-</style>
-```
