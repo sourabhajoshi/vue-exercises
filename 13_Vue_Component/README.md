@@ -1,41 +1,12 @@
-# Components in Vue
+# Lifecycle Hooks
 
-Components are reusable building blocks in Vue apps. They are like custom HTML elements you define and reuse across your app.
+Lifecycle hooks are special functions that let you run code at specific stages of a component’s life from creation to destruction. Vue provides a set of lifecycle hooks that let you tap into these stages.
 
-
-we need Watchers
-- Reuse code
-- Organize big projects
-- Separate logic into meaningful chunks
-- Easy to maintain and scale
-
-That’s where watchers shine. Unlike computed, which is for deriving values, watchers are for doing something when values change.
-
-#### **Structure of a Vue Component**
-
-A Vue component usually has three main parts: template, script and style.
-
-    <template> Block this is where you write the HTML (the user interface).
-
-    <script setup> Block
-    This is where you write your JavaScript logic: variables, functions, props, events, etc.
-
-    <style> Block
-    This is where you write CSS to style your component.
-
-
+Lifecycle Diagram
 ```
-<template>
-<h2>Hello World!</h2>
-</template>
-
-<script setup>
-// you can write logic here
-</script>
-
-<style scoped>
-/* styles go here */
-</style>
+beforeCreate → created → beforeMount → mounted
+→ beforeUpdate → updated
+→ beforeUnmount → unmounted
 ```
 
 Example : 
@@ -43,119 +14,69 @@ Example :
 ```
 <template>
   <div>
-    <h1>Hello, {{ name }}</h1>
-    <button @click="changeName">Change Name</button>
+    <h2>Count: {{ count }}</h2>
+    <button @click="count++">Increment</button>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onBeforeUnmount, onUnmounted } from 'vue'
 
-const name = ref('Vue User')
+const count = ref(0)
 
-function changeName() {
-  name.value = 'Vue Master'
-}
-</script>
+// onBeforeMount: Just before the template is mounted to DOM
+onBeforeMount(() => {
+  console.log('onBeforeMount: DOM not mounted yet')
+})
 
-<style scoped>
-h1 {
-  color: green;
-}
-button {
-  margin-top: 10px;
-  padding: 6px 12px;
-}
-</style>
-```
+// onMounted: After the component is inserted into the DOM
+onMounted(() => {
+  console.log('onMounted: Component is in the DOM now')
+})
 
-#### **Types of Components in Vue**
-1. Root Component
-This is the main component from which the entire app starts. It's usually defined in App.vue. Mounted in main.js.
+// onBeforeUpdate: Called before DOM updates when reactive data changes
+onBeforeUpdate(() => {
+  console.log('onBeforeUpdate: Reactive value changed, DOM will update soon')
+})
 
-```
-// main.js
-import { createApp } from 'vue'
-import App from './App.vue'
+// onUpdated: Called after the DOM updates
+onUpdated(() => {
+  console.log('onUpdated: DOM updated')
+})
 
-createApp(App).mount('#app')
+// onBeforeUnmount: Called before the component is removed from DOM
+onBeforeUnmount(() => {
+  console.log('onBeforeUnmount: Component will be removed')
+})
 
-<!-- App.vue -->
-<template>
-  <h1>This is the Root Component</h1>
-</template>
-```
-
-2. Child Components
-These are components nested inside other components. They help break the UI into reusable pieces.
-
-```
-<!-- HelloWorld.vue -->
-<template>
-  <p>Hello from Child Component!</p>
-</template>
-
-<!-- In App.vue -->
-<template>
-  <HelloWorld />
-</template>
-
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-```
-3. Global Components
-Registered once and used anywhere in the app without importing. Not recommended for large apps (can clutter global space).
-
-```
-// main.js
-import HelloWorld from './components/HelloWorld.vue'
-app.component('HelloWorld', HelloWorld)
-Now you can use <HelloWorld /> in any component.
-```
-
-4. Local Components
-Registered and used only inside a specific component. Keeps code organized and scoped.
-
-```
-<script>
-import HelloWorld from './HelloWorld.vue'
-
-export default {
-  components: {
-    HelloWorld
-  }
-}
+// onUnmounted: Called after component is removed
+onUnmounted(() => {
+  console.log('onUnmounted: Component has been removed')
+})
 </script>
 ```
 
-5. Functional Components
-Stateless, no reactive data. Lightweight, faster to render. Often used for simple UI rendering.
-```
-<script setup>
-defineProps(['title'])
-</script>
+1. beforeCreate()
+Not available in Composition API. It's implicitly part of setup. So we don't use beforeCreate() directly.
 
-<template>
-  <h2>{{ title }}</h2>
-</template>
-```
-6. Dynamic Components
-Loaded or switched dynamically using <component :is="...">.
-```
-<component :is="currentComponent"></component>
+2. created()
+Not available in Composition API. Again, all code inside <script setup> runs after beforeCreate and created, so it's already covered.
 
-<script setup>
-import CompA from './CompA.vue'
-import CompB from './CompB.vue'
+3. onBeforeMount()
+Runs before the component is mounted to the DOM. Setup tasks just before DOM is available.
 
-const currentComponent = ref('CompA') // or 'CompB'
-</script>
-```
-7. Async Components
-Loaded only when needed (lazy loading). Useful for improving performance.
-```
-const AsyncComponent = defineAsyncComponent(() =>
-  import('./MyBigComponent.vue')
-)
-```
+4. onMounted()
+Runs after the component is mounted to the DOM. DOM is now available and reactive state is ready.
+
+5. onBeforeUpdate()
+Runs before the DOM is patched due to reactive data change. Acts like a "last chance" before the DOM changes.
+
+6. onUpdated()
+Runs after the DOM has been updated. React to what just changed.
+
+7. onBeforeUnmount()
+Runs before the component is unmounted and removed from the DOM. We can Cleanup (intervals, event listeners).
+
+8. onUnmounted()
+Runs after the component is unmounted. Final cleanup and no logic should run after this.
+
