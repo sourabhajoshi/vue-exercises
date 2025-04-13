@@ -38,7 +38,7 @@ const components = { HelloWorld, GoodbyeWorld }
 </template>
 ```
 
-2. <transition>
+2. `<transition>`
 
 Add animation when showing/hiding. Like a slide-in or fade effect when a message appears.
 ```
@@ -65,7 +65,7 @@ const show = ref(false)
 </style>
 ```
 
-3. <transition-group>
+3. `<transition-group>`
 
 Animate list items. Like animating a list of tasks, when you add/remove them.
 ```
@@ -97,7 +97,7 @@ function addItem() {
 </style>
 ```
 
-4. <keep-alive>
+4. `<keep-alive>`
 
 Save memory & keep form values. Imagine you filled a form, moved to another tab, and came back form is still there.
 ```
@@ -133,7 +133,7 @@ const count = ref(0)
 </template>
 ```
 
-5. <slot>
+5. `<slot>`
 
 Let parent send custom content. Like a gift box where the parent puts anything inside.
 ```
@@ -157,7 +157,7 @@ import Box from './Box.vue'
 </template>
 ```
 
-6. <teleport>
+6. `<teleport>`
 
 Send content to another place in HTML.
 Example: show a modal or popup on top of everything.
@@ -191,7 +191,7 @@ const showModal = ref(false)
 </style>
 ```
 
-7. <suspense>
+7. `<suspense>`
 
 Wait while loading a component. Imagine showing a "Loading..." spinner while a big page loads.
 ```
