@@ -15,7 +15,7 @@ Vue 3 provides some special components that help you control rendering, transiti
 | `<suspense>`      | Waits for async components or templates to load                         |
 
 
-1. **<component :is="...">**
+1. `<component :is="...">`
 
 Switch between components dynamically. Think of this like a TV remote we can switch channels (components) anytime.
 ```
