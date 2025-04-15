@@ -1,4 +1,4 @@
-# Reactivity in Vue
+# Reactivity in Vue3
 
 Reactivity in Vue is, when the data/state changes, the DOM updates automatically to reflect those changes and no need to manually manipulate the DOM.
 
