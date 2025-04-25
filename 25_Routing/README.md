@@ -30,7 +30,7 @@ src/
     └── index.js  
 ```
 
-#### **Basic example to understand router**
+#### **Step-by-Step Example**
 
 1. main.js :  Setup Vue with Router
 ```
@@ -93,3 +93,196 @@ output :
 - / → loads Home.vue
 - /about → loads About.vue
 No page reload! Smooth transitions between components.
+
+### **Dynamic Route Matching in Vue Router (Vue 3)**
+
+Dynamic route matching allows you to define routes that include dynamic segments using ``:``.
+
+``
+{ path: '/product/:id', component: ProductDetails }
+
+// :id is a placeholder for dynamic data (like 123, abc, etc.)
+``
+
+Use dynamic routing when you:
+- Need to load pages based on IDs (like users, products, blog posts).
+- Have many similar pages but only the data changes. (Ex: /user/1, /user/2, /product/shoe123)
+
+Example : Product Catalog. /products : list of products and /product/:id : single product details
+
+Router Setup : router/index.js
+```
+import { createRouter, createWebHistory } from 'vue-router'
+import ProductList from '../views/ProductList.vue'
+import ProductDetails from '../views/ProductDetails.vue'
+
+const routes = [
+  { path: '/products', name: 'ProductList', component: ProductList },
+  // Dynamic route - :id can be any product ID
+  { path: '/product/:id', name: 'ProductDetails', component: ProductDetails }
+]
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes
+})
+
+export default router
+```
+Mock Product Data : composables/useProducts.js
+```
+export const products = [
+  { id: '1', name: 'Smartphone', price: 699 },
+  { id: '2', name: 'Laptop', price: 999 },
+  { id: '3', name: 'Tablet', price: 499 }
+]
+
+export function getProductById(id) {
+  return products.find(p => p.id === id)
+}
+```
+Product List : views/ProductList.vue
+```
+<template>
+  <div>
+    <h1>All Products</h1>
+    <ul>
+      <!-- router-link to dynamic route -->
+      <li v-for="product in products" :key="product.id">
+        <router-link :to="`/product/${product.id}`">{{ product.name }}</router-link>
+      </li>
+    </ul>
+  </div>
+</template>
+
+<script setup>
+import { products } from '../composables/useProducts'
+</script>
+```
+Product Details : views/ProductDetails.vue
+```
+<script setup>
+import { useRoute } from 'vue-router'
+import { getProductById } from '../composables/useProducts'
+import { ref, watch } from 'vue'
+
+const route = useRoute()
+const product = ref(getProductById(route.params.id))
+
+// Watch for changes in dynamic :id (when navigating between products)
+watch(() => route.params.id, (newId) => {
+  product.value = getProductById(newId)
+})
+</script>
+
+<template>
+  <div v-if="product">
+    <h1>{{ product.name }}</h1>
+    <p>Price: ${{ product.price }}</p>
+  </div>
+  <div v-else>
+    <h2>Product not found</h2>
+  </div>
+</template>
+```
+
+#### **Multiple Dynamic Segments**
+Vue Router allows you to define more than one dynamic segment in a route path. Each :segmentName becomes a key inside $route.params.
+```
+Route Pattern                  | Matched Path        | $route.params
+/user/:username                | /user/evan          | { username: 'evan' }
+/user/:username/post/:post_id  | /user/evan/post/123 | { username: 'evan', post_id: '123' }
+```
+
+### **Nested Routes**
+Nested routes allow you to render a child component inside a parent route’s component, based on a nested path.
+
+Think of them as "routes inside routes".
+```
+{
+  path: '/dashboard',
+  component: DashboardLayout,
+  children: [
+    { path: 'overview', component: Overview },
+    { path: 'settings', component: Settings }
+  ]
+}
+```
+- /dashboard/overview renders DashboardLayout + Overview
+- /dashboard/settings renders DashboardLayout + Settings
+
+Example : Admin Dashboard
+- /admin → parent layout
+- /admin/users → child page
+- /admin/settings → child page
+
+Router Setup : router/index.js
+```
+import { createRouter, createWebHistory } from 'vue-router'
+
+import AdminLayout from '../views/admin/AdminLayout.vue'
+import UsersPage from '../views/admin/UsersPage.vue'
+import SettingsPage from '../views/admin/SettingsPage.vue'
+
+const routes = [
+  {
+    path: '/admin',
+    component: AdminLayout,
+    children: [
+      {
+        path: 'users', // becomes /admin/users
+        component: UsersPage
+      },
+      {
+        path: 'settings', // becomes /admin/settings
+        component: SettingsPage
+      }
+    ]
+  }
+]
+
+export default createRouter({
+  history: createWebHistory(),
+  routes
+})
+```
+Admin Layout : views/admin/AdminLayout.vue
+```
+<template>
+  <div>
+    <h1>Admin Dashboard</h1>
+
+    <!-- Links to child routes -->
+    <nav>
+      <router-link to="/admin/users">Users</router-link> |
+      <router-link to="/admin/settings">Settings</router-link>
+    </nav>
+
+    <hr />
+
+    <!-- Where child components will be rendered -->
+    <router-view />
+  </div>
+</template>
+```
+Users Page : views/admin/UsersPage.vue
+```
+<template>
+  <div>
+    <h2>Manage Users</h2>
+    <ul>
+      <li>User A</li>
+      <li>User B</li>
+    </ul>
+  </div>
+</template>
+```
+Settings Page : views/admin/SettingsPage.vue
+```
+<template>
+  <div>
+    <h2>Settings</h2>
+    <p>Change password, language, etc.</p>
+  </div>
+</template>
+```
