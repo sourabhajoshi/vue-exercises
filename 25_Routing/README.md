@@ -30,7 +30,7 @@ src/
     └── index.js  
 ```
 
-#### **Step-by-Step Example**
+#### **Basic example to understand router**
 
 1. main.js :  Setup Vue with Router
 ```
