@@ -286,3 +286,135 @@ Settings Page : views/admin/SettingsPage.vue
   </div>
 </template>
 ```
+
+Example : Blog Website
+
+Imagine a blog app with:
+- / → Home page (latest posts)
+- /posts → Posts listing
+- /posts/:slug → View a single post dynamically
+- /about → About the blog
+- 404 handling
+- Nested routes inside /posts
+- Passing props to post detail component
+
+router/index.js
+```
+// router/index.js
+import { createRouter, createWebHistory } from 'vue-router'
+
+import Home from '../views/Home.vue'
+import PostsLayout from '../views/posts/PostsLayout.vue'
+import PostsList from '../views/posts/PostsList.vue'
+import PostDetail from '../views/posts/PostDetail.vue'
+import About from '../views/About.vue'
+import NotFound from '../views/NotFound.vue'
+
+const routes = [
+  { path: '/', name: 'Home', component: Home },
+  {
+    path: '/posts',
+    component: PostsLayout,
+    children: [
+      { path: '', name: 'PostsList', component: PostsList },
+      { path: ':slug', name: 'PostDetail', component: PostDetail, props: true }
+    ]
+  },
+  { path: '/about', name: 'About', component: About },
+  { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound }
+]
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes
+})
+
+export default router
+```
+Add Router to main.js
+```
+// main.js
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from './router'
+
+createApp(App).use(router).mount('#app')
+```
+
+Pages Creation
+```
+//Home.vue
+<template>
+  <div>
+    <h1>Welcome to the Blog!</h1>
+    <router-link to="/posts">See All Posts</router-link>
+  </div>
+</template>
+
+
+//PostsLayout.vue
+<template>
+  <div>
+    <h1>Posts Section</h1>
+    <router-view /> <!-- Child routes like PostsList or PostDetail render here -->
+  </div>
+</template>
+
+
+//PostsList.vue
+<script setup>
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const posts = [
+  { title: 'Learn Vue 3', slug: 'learn-vue-3' },
+  { title: 'Master Routing', slug: 'master-routing' }
+]
+
+const goToPost = (slug) => {
+  router.push({ name: 'PostDetail', params: { slug } })
+}
+</script>
+
+<template>
+  <div>
+    <h2>All Blog Posts</h2>
+    <ul>
+      <li v-for="post in posts" :key="post.slug" @click="goToPost(post.slug)">
+        {{ post.title }}
+      </li>
+    </ul>
+  </div>
+</template>
+
+//PostDetail.vue
+<script setup>
+const props = defineProps(['slug'])
+</script>
+
+<template>
+  <div>
+    <h2>Reading Post: {{ slug }}</h2>
+    <router-link to="/posts">← Back to all posts</router-link>
+  </div>
+</template>
+
+
+//About.vue
+<template>
+  <div>
+    <h1>About This Blog</h1>
+    <p>This blog shares Vue tips and tutorials.</p>
+  </div>
+</template>
+
+
+//NotFound.vue
+<template>
+  <div>
+    <h1>404 - Page Not Found</h1>
+    <router-link to="/">Back Home</router-link>
+  </div>
+</template>
+```
