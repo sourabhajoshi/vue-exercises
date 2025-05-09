@@ -189,5 +189,5 @@ export default {
 | Flexibility        | Less flexible            | Highly flexible            |
 
 Note : 
-If you're just getting started, go with Options API.
-If you're building for the long run, learning and using the Composition API is totally worth it.
+- If you're just getting started, go with Options API.
+- If you're building for the long run, learning and using the Composition API is totally worth it.
