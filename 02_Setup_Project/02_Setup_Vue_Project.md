@@ -1,4 +1,4 @@
-# Setup Vue project
+# Setup Vue project :
 
 1. Install Node.js and NPM
 
