@@ -1,4 +1,2 @@
 Vue.Js
 
-Resources : 
-
