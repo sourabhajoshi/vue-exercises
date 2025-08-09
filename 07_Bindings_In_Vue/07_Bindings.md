@@ -1,4 +1,4 @@
-# Bindings in vue3 
+# Bindings in vue
 
 Bindings are a way to link data from the component's state to the DOM. This allows you to dynamically update the UI based on the state of the component. Vue provides several ways to bind data to elements, such as v-bind, v-model, and event handling. 
 
