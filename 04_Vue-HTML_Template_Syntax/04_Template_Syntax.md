@@ -1,6 +1,8 @@
 # Template Syntax​
 
-Vue's template syntax lets you bind HTML to your component's data in a declarative way. Templates are valid HTML and get compiled into optimized JavaScript code. This, combined with Vue’s reactivity system, ensures efficient updates to the DOM. If you prefer more control, you can use render functions or JSX, but they may not be as optimized as templates. 
+In Vue.js, template syntax is the special way you write HTML, so Vue can connect your data and logic to the UI.
+
+It’s basically HTML + Vue’s magic bindings.
 
 
 #### **Virtual DOM**
