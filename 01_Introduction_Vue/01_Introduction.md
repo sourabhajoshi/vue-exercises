@@ -78,9 +78,9 @@ h1 {
 </style>
 ```
 
-- <template>: Defines the HTML layout of the component. 
-- <script>: Contains the JavaScript logic (data, methods, lifecycle hooks).
-- <style>: Adds CSS styles specific to this component.
+- `<template>`: Defines the HTML layout of the component. 
+- `<script>`: Contains the JavaScript logic (data, methods, lifecycle hooks).
+- `<style>`: Adds CSS styles specific to this component.
 The scoped attribute ensures styles apply only within this component.
 
 #### **Types of API styles**
