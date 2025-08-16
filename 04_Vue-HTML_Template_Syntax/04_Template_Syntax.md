@@ -698,4 +698,3 @@ parent component
 10. Shows invoice payment status (Oaid/Pending/Overdue)?
 11. Dynamic text based on the weather (sunny/rainy/cloudy) ?
 12. Build a tab component where only one tab’s content is visible at a time using v-show
-13. 
