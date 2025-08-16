@@ -385,7 +385,7 @@ Basic syntax is
 ```
 - items: an array (or object/range) you're looping over
 - item: current element in the loop
-- :key: required when rendering lists — helps Vue track items efficiently
+- `:key` : required when rendering lists — helps Vue track items efficiently
 
 Example : List of Users with Their Names and Roles
 
