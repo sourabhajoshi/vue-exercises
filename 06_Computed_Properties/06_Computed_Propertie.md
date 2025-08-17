@@ -1,4 +1,4 @@
-# Computed Propertie
+# Computed Propertie 
 
 A computed property is a reactive value that is derived from other reactive sources (like ref or reactive), and Vue automatically caches it so it is recomputed only when needed.
 
@@ -85,7 +85,7 @@ const totalPrice = computed(() => {
 
 **Writable Computed Property**
 
-A writable computed property in Vue is, A computed value that has both a getter (to read) and a setter (to write). It is useful when you want two-way binding (e.g., input fields). It allows you to modify one or more reactive states indirectly via a single computed value.
+A writable computed property in Vue is, A computed value that has both a getter (to read) and a setter (to write). It is useful when you want two-way binding (e.g., input fields).It allows you to modify one or more reactive states indirectly via a single computed value.
 
 Think of it like a wrapper around multiple values where writing to it updates the underlying state.
 
