@@ -210,7 +210,7 @@ is equivalent to
 
 ```<input :value="message" @input="message = $event.target.value" />```
 
-Example : with <input>
+Example : with `<input>`
 ```
 <template>
   <input v-model="name" placeholder="Enter your name" />
@@ -223,7 +223,7 @@ import { ref } from 'vue'
 const name = ref('')
 </script>
 ```
-Example : with <textarea>
+Example : with `<textarea>`
 
 ```
 <template>
@@ -578,7 +578,7 @@ const cards = [
 
 **h. v-text**
 
-v-text is used to insert plain text into an HTML element. Which similar to using {{  }} syntax.
+v-text is used to insert plain text into an HTML element. Which similar to using `{{  }}` syntax.
 
 ```
 <p v-text="message"></p>

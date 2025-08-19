@@ -121,7 +121,7 @@ This API style used for larger and more complex components.
 
 Composition API can be written in two different styles : 
 
-i. Using <script setup>
+i. Using `<script setup>`
 
 A compiler-enhanced syntax that makes Composition API more concise and readable.No need for export default or return from setup() — everything is automatically available in the template.
 

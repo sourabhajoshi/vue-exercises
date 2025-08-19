@@ -204,7 +204,7 @@ ref()
   ```
   const isLoading = ref(true);
   ```
-- .value is required everywhere except in <template>
+- .value is required everywhere except in `<template>`
   ```
   <p>{{ count }}</p> <!-- no .value needed here -->
   ```

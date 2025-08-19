@@ -153,7 +153,7 @@ const count = ref(0)
 
 2. Method-based Event Handler
    
-The logic is placed inside a function in <script setup> and referenced in the template.
+The logic is placed inside a function in `<script setup>` and referenced in the template.
 
 When the logic is more than a line. You will reuse the logic or want cleaner separation of concerns. You want better readability and testability method based event handler usful.
 
@@ -177,7 +177,7 @@ function increment() {
    
 Pass arguments to event handlers using an arrow function.
 
-When need to pass specific data (e.g., an item ID, index, or label) to your handler even handler with parameter s=is useful.
+When need to pass specific data (e.g., an item ID, index, or label) to your handler even handler with parameter is useful.
 
 ```
 <script setup>

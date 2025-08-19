@@ -2,7 +2,7 @@
 
 The emit function in Vue 3 is used to send custom events from a child component to its parent component. It allows the child component to communicate or notify the parent of actions or changes.
 
-In Vue 3, when using the Composition API with the <script setup> syntax, you use defineEmits() to define the custom events that your component will emit.
+In Vue 3, when using the Composition API with the `<script setup>` syntax, you use defineEmits() to define the custom events that your component will emit.
 
 Child Component - Emitting Events
 
