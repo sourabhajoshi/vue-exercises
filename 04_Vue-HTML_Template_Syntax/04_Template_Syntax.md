@@ -4,7 +4,6 @@ In Vue.js, template syntax is the special way you write HTML, so Vue can connect
 
 It’s basically HTML + Vue’s magic bindings.
 
-
 #### **Virtual DOM**
 
 The Virtual DOM (VDOM) is a lightweight copy of the real DOM stored in memory. It allows JavaScript frameworks like Vue, React, etc., to efficiently update the UI without touching the actual DOM directly every time.
