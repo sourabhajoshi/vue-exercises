@@ -2,7 +2,6 @@
 
 Components are reusable building blocks in Vue apps. They are like custom HTML elements you define and reuse across your app.
 
-
 we need Watchers
 - Reuse code
 - Organize big projects
