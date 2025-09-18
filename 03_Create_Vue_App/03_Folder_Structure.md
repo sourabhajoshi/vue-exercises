@@ -1,5 +1,6 @@
 # Vue3 Project Folder Structure
 
+
 ```
 src/
 ├── assets/
