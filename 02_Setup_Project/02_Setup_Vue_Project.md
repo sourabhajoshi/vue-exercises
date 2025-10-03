@@ -12,7 +12,6 @@ node -v //verify node version
 
 npm -v //verify npm version
 ```
-
 2. Install Vue CLI
 
 Vue CLI is a command-line interface that helps you quickly set up a Vue project with all the necessary configurations and tools.
