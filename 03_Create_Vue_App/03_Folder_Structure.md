@@ -1,7 +1,7 @@
 # Vue3 Project Folder Structure
 
 ```
-src/
+src/  
 ├── assets/
 │   ├── images/                # Static images
 │   └── styles/                # Global styles (CSS/SCSS)
