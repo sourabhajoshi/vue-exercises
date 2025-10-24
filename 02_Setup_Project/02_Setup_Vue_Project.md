@@ -27,7 +27,7 @@ Now that Vue CLI is installed, you can create a new Vue project. In your termina
 ```
 vue create my-vue-project //Replace my-vue-project with your preferred project name
 ```
-
+             
 4. Navigate to Your Project Directory
 
 Once the project setup is complete, navigate to the project directory:
