@@ -1,2 +1,1 @@
 vue.js
-vue3
