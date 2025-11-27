@@ -10,8 +10,6 @@ In a normal website, when you click a link, the browser loads a whole new page f
 - When the URL changes, the router dynamically swaps components
 - This gives the feeling of navigating a site, but it's all happening within one page.
 
-
-
 #### **Install Vue Router**
 If you are using Vue 3 with Vite, vue-router@4 is for Vue 3. Use @3 for Vue 2.
 ```
