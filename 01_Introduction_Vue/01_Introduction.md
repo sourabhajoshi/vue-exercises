@@ -4,7 +4,7 @@ Vue is a progressive JavaScript framework for building user interfaces (UIs) and
 
 ```js
 JavaScript : 
-import { createApp, ref } from 'vue'
+import { createApp, ref } from 'vue'    
 
 createApp({
   setup() {
