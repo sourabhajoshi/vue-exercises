@@ -1,2 +1,2 @@
-Vue3 + router + pinia
+Vue3 + router + pinia  
 
