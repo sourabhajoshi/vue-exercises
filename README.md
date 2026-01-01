@@ -1,8 +1,7 @@
 Vue3 + router + pinia     
 
-FRONTEND INTERVIEW QUESTIONS
+FRONTEND INTERVIEW QUESTIONS    
 
-(With short answers direction — not full answers unless you ask)
 HTML Interview Questions
 Basic
 
