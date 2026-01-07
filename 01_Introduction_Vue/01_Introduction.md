@@ -1,7 +1,7 @@
 ## Introduction of Vue :           
 
 Vue is a progressive JavaScript framework for building user interfaces (UIs) and single-page applications (SPAs). It is designed to be incrementally adoptable and integrates smoothly with other libraries or existing projects. Vue builds on standard HTML, CSS, and JavaScript, offering a declarative and component-based programming model to help developers create applications efficiently—whether simple or complex.
-
+     
 ```js
 JavaScript : 
 import { createApp, ref } from 'vue'    
