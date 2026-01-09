@@ -40,7 +40,7 @@ template :
 
 - No need to manually manipulate the DOM—Vue handles it for you efficiently.
 
-#### **Single-File Components (SFCs)**
+#### **Single-File Components (SFCs)**     
 
 Single-File Components (SFCs) are .vue files that contain a component's template, JavaScript logic, and CSS styles all in one file.
 
