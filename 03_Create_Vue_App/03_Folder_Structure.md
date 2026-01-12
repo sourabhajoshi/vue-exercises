@@ -1,4 +1,4 @@
-# Vue3 Project Folder Structure    
+# Vue Project Folder Structure    
    
 ```
 src/
