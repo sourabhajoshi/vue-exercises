@@ -45,7 +45,7 @@ template :
 Single-File Components (SFCs) are .vue files that contain a component's template, JavaScript logic, and CSS styles all in one file.
 
 This structure makes Vue components self-contained, organized, and easy to maintain.
-
+   
 ```
 <template>
   <!-- HTML structure of the component -->
