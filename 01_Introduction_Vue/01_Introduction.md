@@ -6,7 +6,7 @@ Vue is a progressive JavaScript framework for building user interfaces (UIs) and
 JavaScript :   
 import { createApp, ref } from 'vue'       
 
-createApp({
+createApp({  
   setup() {
     return {
       count: ref(0)
