@@ -11,7 +11,7 @@ In Vue 3, ref() is a function that creates a reactive reference to a value mostl
 
 ```
 import { ref } from 'vue'
-const count = ref(0)
+const count = ref(0)    
 ```
 This count is now a reactive reference object. It wraps the value and allows Vue to track changes and trigger DOM updates automatically when the value changes.
 
