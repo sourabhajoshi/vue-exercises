@@ -5,7 +5,7 @@ Reactivity in Vue is, when the data/state changes, the DOM updates automatically
 Vue uses a reactive system to track changes in data and update the UI accordingly.
 
 
-#### **ref()**
+#### **ref()**    
 
 In Vue 3, ref() is a function that creates a reactive reference to a value mostly used for primitive values like strings, numbers, booleans, etc.
 
