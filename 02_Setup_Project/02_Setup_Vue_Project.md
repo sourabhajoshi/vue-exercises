@@ -1,5 +1,5 @@
 # Setup Vue project :
-
+    
 1. Install Node.js and NPM      
 
 Before create a Vue project, we need to install Node.js (which includes npm — Node's package manager).
