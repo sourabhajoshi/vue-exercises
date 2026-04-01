@@ -112,7 +112,7 @@ export default {
 };
 </script>
 ```
-
+  
 2. Composition API
 
 Vue's setup() function to compose logic using reactive primitives like ref, reactive, computed, watch, etc.
