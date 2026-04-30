@@ -15,7 +15,7 @@ What are void elements? List some.
 
 Difference between <section> vs <article> vs <aside>.
 
-Intermediate
+Intermediate             
 
 What is the difference between localStorage, sessionStorage, and cookies?
 
