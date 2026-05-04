@@ -2,7 +2,7 @@ Vue3 + router + pinia
 
 FRONTEND INTERVIEW QUESTIONS    
 
-HTML Interview Questions
+HTML Interview Questions     
 Basic
 
 What is HTML and why is it used?
