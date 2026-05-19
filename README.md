@@ -17,7 +17,7 @@ Difference between <section> vs <article> vs <aside>.
 
 Intermediate             
 
-What is the difference between localStorage, sessionStorage, and cookies?
+What is the difference between localStorage, sessionStorage, and cookies?       
 
 What is the purpose of data-* attributes?
 
