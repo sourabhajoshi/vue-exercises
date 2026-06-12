@@ -39,7 +39,7 @@ What are web components?
 
 Difference between defer, async, and normal script loading?
 
-🎨 CSS Interview Questions
+CSS Interview Questions
 
 Basic
 
