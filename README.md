@@ -65,7 +65,7 @@ What is BEM methodology?
 
 What is responsive design? Methods to achieve it.
 
-Advanced
+Advanced  
 
 What is critical CSS?
 
