@@ -11,7 +11,7 @@ Difference between <div> and <span>?
 
 What is semantic HTML? Give examples.
 
-What are void elements? List some.
+What are void elements? List some.   
 
 Difference between <section> vs <article> vs <aside>.
 
