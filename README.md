@@ -21,7 +21,7 @@ What is the difference between localStorage, sessionStorage, and cookies?
 
 What is the purpose of data-* attributes?
 
-Why do we need meta tags? Explain viewport meta tag.
+Why do we need meta tags? Explain viewport meta tag.  
 
 How does browser render HTML? (Critical rendering path)
 
