@@ -9,7 +9,7 @@ What is HTML and why is it used?
 
 Difference between <div> and <span>?    
 
-What is semantic HTML? Give examples.
+What is semantic HTML? Give examples. 
 
 What are void elements? List some.   
 
