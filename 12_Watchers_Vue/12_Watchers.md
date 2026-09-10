@@ -1,4 +1,4 @@
-# Watchers
+# Watchers    
 
 A Watcher in Vue is a way to watch for changes in reactive data (ref, reactive, or computed properties) and run custom logic whenever that data changes.
 
