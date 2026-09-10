@@ -3,7 +3,7 @@
 A Watcher in Vue is a way to watch for changes in reactive data (ref, reactive, or computed properties) and run custom logic whenever that data changes.
 
 we need Watchers
-- Even though Vue's reactivity system handles a lot with computed, sometimes you:
+- Even though Vue's reactivity system handles a lot with computed, sometimes you:   
 - Need to react to a data change (like API calls, form validation).
 - Want to perform side effects (like logging, updating local storage, animations).
 - Have asynchronous actions that must run only when specific data changes.
