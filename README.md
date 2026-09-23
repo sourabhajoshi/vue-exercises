@@ -5,7 +5,7 @@ FRONTEND INTERVIEW QUESTIONS
 
 HTML Interview Questions         
 Basic   
-
+  
 What is HTML and why is it used?
 
 Difference between <div> and <span>?    
